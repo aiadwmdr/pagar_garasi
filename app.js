@@ -40,12 +40,14 @@ const firebaseConfig = {
     gpio1: document.getElementById("gpio1Btn"),
     gpio2: document.getElementById("gpio2Btn"),
     gpio3: document.getElementById("gpio3Btn")
+    gpio4: document.getElementById("gpio4Btn")
   };
 
   const gpioLabels = {
     gpio1: document.getElementById("gpio1Status"),
     gpio2: document.getElementById("gpio2Status"),
     gpio3: document.getElementById("gpio3Status")
+    gpio4: document.getElementById("gpio4Status")
   };
 
   // Login
@@ -82,7 +84,7 @@ const firebaseConfig = {
 
   // Listen to DB
   function startListeners() {
-    ["gpio1", "gpio2", "gpio3"].forEach((key) => {
+    ["gpio1", "gpio2", "gpio3", "gpio4"].forEach((key) => {
       onValue(ref(db, "/" + key), (snapshot) => {
         let value = snapshot.val() ? 1 : 0;
         updateUI(key, value);
@@ -114,3 +116,4 @@ const firebaseConfig = {
       lab.style.color = "#d1d1d1";
     }
   }
+
